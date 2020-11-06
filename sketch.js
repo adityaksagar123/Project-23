@@ -4,6 +4,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Render = Matter.Render;
 var box1, box2, box3;
 var box1Sprite,box2Sprite,box3Sprite;
 
@@ -46,10 +47,10 @@ function setup() {
 	box1  = Bodies.rectangle(400, 650, 200,20, {isStatic:true});
 	World.add(world, box1);
 
-	box2  = Bodies.rectangle(400, 650, 200,20, {isStatic:true});
+	box2  = Bodies.rectangle(300, 620, 20,100, {isStatic:true});
 	World.add(world, box2);
 
-	box3  = Bodies.rectangle(400, 650, 200,20, {isStatic:true});
+	box3  = Bodies.rectangle(500, 620, 20,100, {isStatic:true});
 	World.add(world, box3);
 
 	packageBody = Bodies.circle(width/2 , 200 , 5 , { isStatic:true});
@@ -59,7 +60,9 @@ function setup() {
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
-
+	
+	 var render = Render.create({ element: document.body, engine: engine, options: { width: 1200, height: 700, wireframes: false } }); 
+	Render.run(render);
 	Engine.run(engine);
   
 }
